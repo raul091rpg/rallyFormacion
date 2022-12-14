@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>rallyFormacion</title>
+
+    <script type="text/javascript" src="/apps/2.1/sdk.js"></script>
+
+    <script type="text/javascript">
+        Rally.onReady(function () {
+                Ext.define("CustomApp",{extend:"Rally.app.App",componentCls:"app",launch:function(){console.log("our first app rally"),this._loadData()},_loadData:function(){var t=Ext.create("Rally.data.wsapi.Store",{model:"User Story",autoLoad:!0,listeners:{load:function(a,o,e){console.log("got data",a,o,e),this._loadGrid(t)},scope:this},fetch:["FormattedID","Name","ScheduleState"]})},_loadGrid:function(t){var a=Ext.create("Rally.ui.grid.Grid",{store:t,columCfgs:["FormattedID","Name","ScheduleState"]});this.add(a),console.log("what is this ",this)}});
+
+            Rally.launchApp('CustomApp', {
+                name:"rallyFormacion",
+                parentRepos:"",
+                version:"0.1.1"
+            });
+
+        });
+    </script>
+
+
+    <style type="text/css">
+        
+    </style>
+</head>
+<body>
+</body>
+</html>
